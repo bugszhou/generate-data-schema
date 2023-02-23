@@ -31,11 +31,11 @@ function activate(context) {
             const fileName = fileObj.name;
             (0, fs_1.writeFileSync)((0, path_1.join)(fileObj.dir, `${fileName}.ts`), `import { IDO } from "data-model-service";
 
-export default function get${(0, lodash_1.capitalize)(fileName)}Schema() {
+export default function get${(0, lodash_1.upperFirst)(fileName)}Schema() {
   return ${JSON.stringify(schema, null, 2)};
 						}
 						
-export type I${(0, lodash_1.capitalize)(fileName)}DO = IDO<ReturnType<typeof getSchema>>;`);
+export type I${(0, lodash_1.upperFirst)(fileName)}DO = IDO<ReturnType<typeof getSchema>>;`);
             vscode.window.showInformationMessage("转换成功！");
         }
         catch (e) {
