@@ -31,7 +31,7 @@ function activate(context) {
             const fileName = fileObj.name;
             (0, fs_1.writeFileSync)((0, path_1.join)(fileObj.dir, `${fileName}.ts`), `import { IDO } from "data-model-service";
 
-export default function getSchema() {
+export default function get${(0, lodash_1.capitalize)(fileName)}Schema() {
   return ${JSON.stringify(schema, null, 2)};
 						}
 						

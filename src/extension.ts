@@ -39,7 +39,7 @@ export function activate(context: vscode.ExtensionContext) {
           join(fileObj.dir, `${fileName}.ts`),
           `import { IDO } from "data-model-service";
 
-export default function getSchema() {
+export default function get${capitalize(fileName)}Schema() {
   return ${JSON.stringify(schema, null, 2)};
 						}
 						
