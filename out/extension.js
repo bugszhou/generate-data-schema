@@ -32,10 +32,10 @@ function activate(context) {
             (0, fs_1.writeFileSync)((0, path_1.join)(fileObj.dir, `${fileName}.ts`), `import { IDO } from "data-model-service";
 
 export default function get${(0, lodash_1.upperFirst)(fileName)}Schema() {
-  return ${JSON.stringify(schema, null, 2)};
+  return ${JSON.stringify(schema, null, 4)};
 						}
 						
-export type I${(0, lodash_1.upperFirst)(fileName)}DO = IDO<ReturnType<typeof getSchema>>;`);
+export type I${(0, lodash_1.upperFirst)(fileName)}DO = IDO<ReturnType<typeof get${(0, lodash_1.upperFirst)(fileName)}Schema>>;`);
             vscode.window.showInformationMessage("转换成功！");
         }
         catch (e) {

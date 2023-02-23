@@ -40,10 +40,10 @@ export function activate(context: vscode.ExtensionContext) {
           `import { IDO } from "data-model-service";
 
 export default function get${upperFirst(fileName)}Schema() {
-  return ${JSON.stringify(schema, null, 2)};
+  return ${JSON.stringify(schema, null, 4)};
 						}
 						
-export type I${upperFirst(fileName)}DO = IDO<ReturnType<typeof getSchema>>;`,
+export type I${upperFirst(fileName)}DO = IDO<ReturnType<typeof get${upperFirst(fileName)}Schema>>;`,
         );
         vscode.window.showInformationMessage("转换成功！");
       } catch (e) {
