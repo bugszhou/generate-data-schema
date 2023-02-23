@@ -40,7 +40,7 @@ export function activate(context: vscode.ExtensionContext) {
           `import { IDO } from "data-model-service";
 
 export default function getSchema() {
-return ${JSON.stringify(schema, null, 2)};
+  return ${JSON.stringify(schema, null, 2)};
 						}
 						
 export type I${capitalize(fileName)}DO = IDO<ReturnType<typeof getSchema>>;`,
