@@ -7,6 +7,7 @@ const vscode = require("vscode");
 const path_1 = require("path");
 const fs_1 = require("fs");
 const generateDataSchema_1 = require("./generateDataSchema");
+const lodash_1 = require("lodash");
 var SupportFileExt;
 (function (SupportFileExt) {
     SupportFileExt[SupportFileExt[".json"] = 1] = ".json";
@@ -30,11 +31,11 @@ function activate(context) {
             const fileName = fileObj.name;
             (0, fs_1.writeFileSync)((0, path_1.join)(fileObj.dir, `${fileName}.ts`), `import { IDO } from "data-model-service";
 
-export default function getSchema () {
+export default function getSchema() {
 return ${JSON.stringify(schema, null, 2)};
 						}
 						
-export type IDataDO = IDO<ReturnType<typeof getSchema>>;`);
+export type I${(0, lodash_1.capitalize)(fileName)}DO = IDO<ReturnType<typeof getSchema>>;`);
             vscode.window.showInformationMessage("转换成功！");
         }
         catch (e) {

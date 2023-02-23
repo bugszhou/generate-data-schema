@@ -4,6 +4,7 @@ import * as vscode from "vscode";
 import { join, parse } from "path";
 import { readFileSync, writeFileSync } from "fs";
 import transform, { setDefaultValue } from "./generateDataSchema";
+import { capitalize } from "lodash";
 
 enum SupportFileExt {
   ".json" = 1,
@@ -38,11 +39,11 @@ export function activate(context: vscode.ExtensionContext) {
           join(fileObj.dir, `${fileName}.ts`),
           `import { IDO } from "data-model-service";
 
-export default function getSchema () {
+export default function getSchema() {
 return ${JSON.stringify(schema, null, 2)};
 						}
 						
-export type IDataDO = IDO<ReturnType<typeof getSchema>>;`,
+export type I${capitalize(fileName)}DO = IDO<ReturnType<typeof getSchema>>;`,
         );
         vscode.window.showInformationMessage("转换成功！");
       } catch (e) {
