@@ -29,7 +29,7 @@ function activate(context) {
             (0, generateDataSchema_1.setDefaultValue)(defaultValue);
             const schema = (0, generateDataSchema_1.default)(data);
             const fileName = fileObj.name;
-            (0, fs_1.writeFileSync)((0, path_1.join)(fileObj.dir, `${fileName}.ts`), `import { IDO } from "data-model-service";
+            (0, fs_1.writeFileSync)((0, path_1.join)(fileObj.dir, `get${(0, lodash_1.upperFirst)(fileName)}Schema.ts`), `import { IDO } from "data-model-service";
 
 export default function get${(0, lodash_1.upperFirst)(fileName)}Schema() {
   return ${JSON.stringify(schema, null, 4)};

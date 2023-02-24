@@ -36,7 +36,7 @@ export function activate(context: vscode.ExtensionContext) {
         const schema = transform(data);
         const fileName = fileObj.name;
         writeFileSync(
-          join(fileObj.dir, `${fileName}.ts`),
+          join(fileObj.dir, `get${upperFirst(fileName)}Schema.ts`),
           `import { IDO } from "data-model-service";
 
 export default function get${upperFirst(fileName)}Schema() {
