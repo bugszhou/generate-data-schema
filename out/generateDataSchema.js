@@ -25,7 +25,7 @@ function transform(data) {
         return;
     }
     if (dataType === "object" && Array.isArray(data)) {
-        return transformArray(data);
+        return transformArray(data)?.properties ?? Object.create(null);
     }
     return transformObject(data);
 }
