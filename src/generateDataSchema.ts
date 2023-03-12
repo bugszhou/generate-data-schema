@@ -45,7 +45,7 @@ function template(type: string, from: string, elementType: string) {
     elementType,
   };
 
-  if (isBaseType(type)) {
+  if (isBaseType(type) || isBaseType(elementType)) {
     delete tpl.properties;
   }
 
@@ -86,7 +86,7 @@ function transformArray(data: any[]) {
   if (isBaseType(type)) {
     return {
       elementType: type,
-      properties: Object.create(null),
+      properties: null,
     };
   }
 
