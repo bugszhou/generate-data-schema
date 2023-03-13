@@ -69,10 +69,11 @@ function transformObject(data: Record<string, any>) {
 
     if (valType === "object" && Array.isArray(val)) {
       const tpl = transformArray(val);
-      if (!isBaseType(tpl.elementType)) {
-        temp[camelCase(key)].properties = tpl.properties;
-      }
+      temp[camelCase(key)].properties = tpl.properties;
       temp[camelCase(key)].elementType = tpl.elementType;
+      if (isBaseType(tpl.elementType)) {
+        delete temp[camelCase(key)].properties;
+      }
       return;
     }
     temp[camelCase(key)].properties = transformObject(val);
