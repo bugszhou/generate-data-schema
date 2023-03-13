@@ -3,7 +3,7 @@
   "displayName": "generate-data-schema",
   "description": "",
   "publisher": "yiri",
-  "version": "0.0.9",
+  "version": "0.0.10",
   "engines": {
     "vscode": "^1.60.0"
   },
