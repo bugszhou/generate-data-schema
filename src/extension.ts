@@ -41,7 +41,7 @@ export function activate(context: vscode.ExtensionContext) {
 
 export default function get${upperFirst(fileName)}Schema() {
   return ${JSON.stringify(schema, null, 4)};
-						}
+}
 						
 export type I${upperFirst(fileName)}DO = IDO<ReturnType<typeof get${upperFirst(fileName)}Schema>>;`,
         );

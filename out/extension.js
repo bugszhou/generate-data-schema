@@ -33,7 +33,7 @@ function activate(context) {
 
 export default function get${(0, lodash_1.upperFirst)(fileName)}Schema() {
   return ${JSON.stringify(schema, null, 4)};
-						}
+}
 						
 export type I${(0, lodash_1.upperFirst)(fileName)}DO = IDO<ReturnType<typeof get${(0, lodash_1.upperFirst)(fileName)}Schema>>;`);
             vscode.window.showInformationMessage("转换成功！");

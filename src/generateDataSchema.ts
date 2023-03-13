@@ -69,7 +69,9 @@ function transformObject(data: Record<string, any>) {
 
     if (valType === "object" && Array.isArray(val)) {
       const tpl = transformArray(val);
-      temp[camelCase(key)].properties = tpl.properties;
+      if (!isBaseType(tpl.elementType)) {
+        temp[camelCase(key)].properties = tpl.properties;
+      }
       temp[camelCase(key)].elementType = tpl.elementType;
       return;
     }
@@ -86,7 +88,6 @@ function transformArray(data: any[]) {
   if (isBaseType(type)) {
     return {
       elementType: type,
-      properties: null,
     };
   }
 

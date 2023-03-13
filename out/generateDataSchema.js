@@ -54,7 +54,9 @@ function transformObject(data) {
         }
         if (valType === "object" && Array.isArray(val)) {
             const tpl = transformArray(val);
-            temp[(0, lodash_1.camelCase)(key)].properties = tpl.properties;
+            if (!isBaseType(tpl.elementType)) {
+                temp[(0, lodash_1.camelCase)(key)].properties = tpl.properties;
+            }
             temp[(0, lodash_1.camelCase)(key)].elementType = tpl.elementType;
             return;
         }
@@ -69,7 +71,6 @@ function transformArray(data) {
     if (isBaseType(type)) {
         return {
             elementType: type,
-            properties: null,
         };
     }
     if (type === "object" && Array.isArray(arr)) {
