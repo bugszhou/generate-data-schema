@@ -48,21 +48,21 @@ function transformObject(data) {
     keys.forEach((key) => {
         const val = data[key];
         const valType = typeof val;
-        temp[(0, lodash_1.camelCase)(key)] = template(Array.isArray(val) ? "array" : valType, key, Array.isArray(val) ? "array" : valType);
+        temp[(0, lodash_1.snakeCase)(key)] = template(Array.isArray(val) ? "array" : valType, key, Array.isArray(val) ? "array" : valType);
         if (isBaseType(valType)) {
             return;
         }
         if (valType === "object" && Array.isArray(val)) {
             const tpl = transformArray(val);
-            temp[(0, lodash_1.camelCase)(key)].properties = tpl.properties;
-            temp[(0, lodash_1.camelCase)(key)].elementType = tpl.elementType;
+            temp[(0, lodash_1.snakeCase)(key)].properties = tpl.properties;
+            temp[(0, lodash_1.snakeCase)(key)].elementType = tpl.elementType;
             if (isBaseType(tpl.elementType)) {
-                delete temp[(0, lodash_1.camelCase)(key)].properties;
+                delete temp[(0, lodash_1.snakeCase)(key)].properties;
             }
             return;
         }
-        temp[(0, lodash_1.camelCase)(key)].properties = transformObject(val);
-        temp[(0, lodash_1.camelCase)(key)].elementType = "object";
+        temp[(0, lodash_1.snakeCase)(key)].properties = transformObject(val);
+        temp[(0, lodash_1.snakeCase)(key)].elementType = "object";
     });
     return temp;
 }
@@ -95,4 +95,4 @@ function setDefaultValue(val) {
     defaultValue = val;
 }
 exports.setDefaultValue = setDefaultValue;
-//# sourceMappingURL=generateDataSchema.js.map
+//# sourceMappingURL=transform.js.map

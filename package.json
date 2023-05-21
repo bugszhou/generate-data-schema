@@ -23,12 +23,20 @@
       {
         "command": "extension.data2schema",
         "title": "data2schema"
+      },
+      {
+        "command": "generate-data-schema.toSnakeCase",
+        "title": "to snake case"
       }
     ],
     "menus": {
       "explorer/context": [
         {
           "command": "extension.data2schema",
+          "group": "1_modification"
+        },
+        {
+          "command": "generate-data-schema.toSnakeCase",
           "group": "1_modification"
         }
       ]
@@ -41,6 +49,16 @@
           "type": "object",
           "default": {
             "number": -1,
+            "string": "",
+            "boolean": false,
+            "array": [],
+            "object": {}
+          }
+        },
+        "generate-data-schema.snakeCase": {
+          "type": "object",
+          "default": {
+            "number": null,
             "string": "",
             "boolean": false,
             "array": [],
