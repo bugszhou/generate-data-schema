@@ -8,9 +8,10 @@ import toSnakeCase from "./commands/toSnakeCase";
 // your extension is activated the very first time the command is executed
 export function activate(context: vscode.ExtensionContext) {
   const camelCase = toCamelCase();
+  const toCamelCaseCommand = toCamelCase("generate-data-schema.toCamelCase");
   const snakeCase = toSnakeCase();
 
-  context.subscriptions.push(camelCase, snakeCase);
+  context.subscriptions.push(camelCase, toCamelCaseCommand, snakeCase);
 }
 
 // this method is called when your extension is deactivated

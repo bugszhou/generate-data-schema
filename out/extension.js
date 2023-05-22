@@ -7,8 +7,9 @@ const toSnakeCase_1 = require("./commands/toSnakeCase");
 // your extension is activated the very first time the command is executed
 function activate(context) {
     const camelCase = (0, toCamelCase_1.default)();
+    const toCamelCaseCommand = (0, toCamelCase_1.default)("generate-data-schema.toCamelCase");
     const snakeCase = (0, toSnakeCase_1.default)();
-    context.subscriptions.push(camelCase, snakeCase);
+    context.subscriptions.push(camelCase, toCamelCaseCommand, snakeCase);
 }
 exports.activate = activate;
 // this method is called when your extension is deactivated

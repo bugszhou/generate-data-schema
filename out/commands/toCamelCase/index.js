@@ -10,8 +10,8 @@ var SupportFileExt;
 (function (SupportFileExt) {
     SupportFileExt[SupportFileExt[".json"] = 1] = ".json";
 })(SupportFileExt || (SupportFileExt = {}));
-function toCamelCase() {
-    return vscode.commands.registerCommand("extension.data2schema", async (info) => {
+function toCamelCase(command = "extension.data2schema") {
+    return vscode.commands.registerCommand(command, async (info) => {
         const filePath = info.path || "";
         const fileObj = (0, path_1.parse)(filePath);
         if (!fileObj.ext || !SupportFileExt[fileObj.ext]) {

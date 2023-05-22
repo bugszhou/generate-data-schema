@@ -27,12 +27,20 @@
       {
         "command": "generate-data-schema.toSnakeCase",
         "title": "to snake case"
+      },
+      {
+        "command": "generate-data-schema.toCamelCase",
+        "title": "to camel case"
       }
     ],
     "menus": {
       "explorer/context": [
         {
           "command": "extension.data2schema",
+          "group": "1_modification"
+        },
+        {
+          "command": "generate-data-schema.toCamelCase",
           "group": "1_modification"
         },
         {
