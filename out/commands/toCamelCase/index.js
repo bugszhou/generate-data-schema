@@ -24,8 +24,9 @@ function toCamelCase(command = "extension.data2schema") {
             const data = JSON.parse((0, fs_1.readFileSync)(filePath, "utf-8") || "{}");
             (0, generateDataSchema_1.setDefaultValue)(defaultValue);
             const schema = (0, generateDataSchema_1.default)(data);
-            const fileName = fileObj.name;
-            const targetPath = (0, path_1.join)(fileObj.dir, `get${(0, lodash_1.upperFirst)(fileName)}Schema.ts`);
+            const fileNames = fileObj.name?.split?.(".");
+            const fileName = fileNames?.shift() ?? "";
+            const targetPath = (0, path_1.join)(fileObj.dir, `get${(0, lodash_1.upperFirst)(fileName)}Schema${fileNames.length ? "." : ""}${fileNames.join(".")}.ts`);
             if ((0, fs_1.existsSync)(targetPath)) {
                 const disabled = (0, isDisabled_1.default)((0, fs_1.readFileSync)(targetPath, "utf-8"));
                 if (disabled) {

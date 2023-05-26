@@ -31,11 +31,14 @@ export default function toSnakeCase() {
         const data = JSON.parse(readFileSync(filePath, "utf-8") || "{}");
         setDefaultValue(defaultValue);
         const schema = transform(data);
-        const fileName = fileObj.name;
+        const fileNames = fileObj.name?.split?.(".");
+        const fileName = fileNames?.shift() ?? "";
 
         const targetPath = join(
           fileObj.dir,
-          `get${upperFirst(fileName)}Schema.ts`,
+          `get${upperFirst(fileName)}Schema${
+            fileNames.length ? "." : ""
+          }${fileNames.join(".")}.ts`,
         );
 
         if (existsSync(targetPath)) {
